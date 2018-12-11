@@ -4,7 +4,7 @@ import Form from "./components/Form"
 import "./App.css"
 import Weather from './components/Weather'
 
-const API_KEY = "12ac05330337a57ab7199ec9f4d9b192";
+const API_KEY = process.env.REACT_APP_WEATHER_API_KEY;
 
 class App extends React.Component{
   
@@ -20,30 +20,33 @@ class App extends React.Component{
   getWeather = async (e) => {
     e.preventDefault();
     const city = e.target.elements.city.value;
-    // const country = e.target.elements.country.value;
-    const api_call = await fetch(`http://api.openweathermap.org/data/2.5/weather?q=${city}&APPID=${API_KEY}`);
-    const data = await api_call.json();
-    if (city && data.cod === 200){
-      console.log(data);
-      this.setState({
-        temperature: data.main.temp,
-        city: data.name,
-        country: data.sys.country,
-        humidity: data.main.humidity,
-        description: data.weather[0].description,
-        error: "" 
-      });
-    }
-    else{
-      this.setState({
-        temperature: undefined,
-        city: undefined,
-        country: undefined,
-        humidity: undefined,
-        description: undefined,
-        error: "Please enter a valid city"
-      });
-    }
+    await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&APPID=${API_KEY}`)
+      .then(res => res.json())
+      .then(data => {
+        if (city && data.cod === 200){
+          console.log(data);
+          this.setState({
+            temperature: data.main.temp,
+            city: data.name,
+            country: data.sys.country,
+            humidity: data.main.humidity,
+            description: data.weather[0].description,
+            error: "" 
+          });
+        }
+        else{
+          this.setState({
+            temperature: undefined,
+            city: undefined,
+            country: undefined,
+            humidity: undefined,
+            description: undefined,
+            error: "Please enter a valid city"
+          });
+        }
+      })
+      .catch(e => console.log(e));
+    
   }
 
 
