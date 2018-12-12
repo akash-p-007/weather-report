@@ -26,7 +26,6 @@ input[type="text"] {
   border-bottom: solid 1px #f16051;
   width: 30%;
   padding-bottom: 4px;
-  color: #000 !important;
   font-weight: lighter;
   letter-spacing: 2px;
   margin-bottom: 30px;
@@ -38,7 +37,37 @@ input[type="text"] {
     outline: none;
 }
 
-input:-webkit-autofill {
-    -webkit-box-shadow: 0 0 0 30px #2c3e50 inset;
-    -webkit-text-fill-color: #000 !important;
+.container{ 
+  width: 704px;
+  height: 250px;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+}
+
+.title-container{
+  
+}
+
+.Clear {
+  background-image: url("/img/Clear.jpeg");
+}
+
+.Clouds {
+  background-image: url("/img/Cloudy.jpg"); 
+}
+
+.Rain {
+  background-image: url("/img/Rain.jpeg");
+}
+
+.Haze{
+  background-image: url("/img/Haze.jpg");
+}
+
+.Mist{
+  background-image: url("/img/Mist.jpg");
 }
