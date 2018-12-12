@@ -11,7 +11,7 @@ class App extends React.Component{
   state = {
     temperature: undefined,
     city: undefined,
-    country: undefined,
+    status: undefined,
     humidity: undefined,
     description: undefined,
     error: undefined
@@ -28,7 +28,7 @@ class App extends React.Component{
           this.setState({
             temperature: data.main.temp,
             city: data.name,
-            country: data.sys.country,
+            status: data.weather[0].main,
             humidity: data.main.humidity,
             description: data.weather[0].description,
             error: "" 
@@ -38,7 +38,7 @@ class App extends React.Component{
           this.setState({
             temperature: undefined,
             city: undefined,
-            country: undefined,
+            status: undefined,
             humidity: undefined,
             description: undefined,
             error: "Please enter a valid city"
@@ -53,16 +53,20 @@ class App extends React.Component{
   render(){
     return(
      <div>
-       <Titles /> 
-       <Form getWeather={this.getWeather}/>
-       <Weather
-       temperature = {this.state.temperature}
-       error = {this.state.error}
-       city = {this.state.city}
-       country = {this.state.country}
-       hummidity = {this.state.humidity}
-       description = {this.state.description} 
-       />
+        <div className="container">
+          <div className="title-container">
+            <Titles />
+          </div>   
+          <Form getWeather={this.getWeather}/>
+          <Weather
+          temperature = {this.state.temperature}
+          error = {this.state.error}
+          city = {this.state.city}
+          status = {this.state.status}
+          humidity = {this.state.humidity}
+          description = {this.state.description} 
+          />
+        </div>
      </div>
     );
   }
