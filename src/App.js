@@ -3,6 +3,8 @@ import Titles from "./components/Title"
 import Form from "./components/Form"
 import "./App.css"
 import Weather from './components/Weather'
+import GoogleMapLoader from "react-google-maps-loader"
+import GooglePlacesSuggest from "react-google-places-suggest"
 
 const API_KEY = process.env.REACT_APP_WEATHER_API_KEY;
 
