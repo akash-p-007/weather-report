@@ -26,17 +26,17 @@ class Form extends React.Component{
     return(
       <GoogleMapLoader
         params={{
-          key: MY_API_KEY,
-          libraries: "places,geocode",
+        key: MY_API_KEY,
+        libraries: "places,geocode",
         }}
         render={googleMaps =>
         googleMaps && (
         <GooglePlacesSuggest
           googleMaps={googleMaps} 
-          autocompletionRequest={{
-              input: search,
-          }}
-          onSelectSuggest={this.handleSelectSuggest}>
+                          autocompletionRequest={{
+                              input: search,
+                          }}
+                          onSelectSuggest={this.handleSelectSuggest}>
 
         <form onSubmit={this.props.getWeather}>
           <input type="text" name="city" placeholder="
