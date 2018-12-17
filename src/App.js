@@ -1,11 +1,11 @@
-import React from "react";
+import React, { Component, Suspense } from "react";
 import Titles from "./components/Title"
 import Form from "./components/Form"
 import "./App.css"
-import Weather from './components/Weather'
 import GoogleMapLoader from "react-google-maps-loader"
 import GooglePlacesSuggest from "react-google-places-suggest"
 
+const Weather = React.lazy(() => import("./components/Weather"));
 const API_KEY = process.env.REACT_APP_WEATHER_API_KEY;
 
 class App extends React.Component{
@@ -60,6 +60,7 @@ class App extends React.Component{
             <Titles />
           </div>   
           <Form getWeather={this.getWeather}/>
+          <Suspense fallback={<div>Loading...</div>}>
           <Weather
           temperature = {this.state.temperature}
           error = {this.state.error}
@@ -68,6 +69,8 @@ class App extends React.Component{
           humidity = {this.state.humidity}
           description = {this.state.description} 
           />
+          </Suspense>
+          
         </div>
      </div>
     );
