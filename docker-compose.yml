@@ -1,0 +1,15 @@
+version: '2'
+services:
+  weather-report:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: weather-report
+    ports:
+      - '3000:3000'
+    volumes:
+      - './:/usr/src/app'
+      - '/usr/src/app/node_modules'
+      
+
+  
